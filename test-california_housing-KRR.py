@@ -21,13 +21,13 @@ housing = datasets.fetch_california_housing()
 # Longitude：街区的经度
 
 #将数据转化成DataFrame,去除最后三个feature
-X = pd.DataFrame(housing.data,columns=housing.feature_names)
+X = pd.DataFrame(housing.data, columns = housing.feature_names)
 
 #获取目标值
 y = housing.target
 
 #拆分数据集（train set & test set）
-Xtrain,Xtest,Ytrain,Ytest = train_test_split(X,y,test_size=0.3,random_state=420)
+Xtrain, Xtest, Ytrain, Ytest = train_test_split(X, y, test_size=0.3,random_state=420)
 
 #训练模型
 KRR.fit(Xtrain,Ytrain)
