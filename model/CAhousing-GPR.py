@@ -1,5 +1,5 @@
 import time  # 计时模块
-from sklearn import datasets
+import pandas as pd
 from sklearn.gaussian_process import GaussianProcessRegressor
 from sklearn.gaussian_process.kernels import DotProduct, WhiteKernel
 from sklearn.metrics import mean_squared_error, r2_score
@@ -8,11 +8,13 @@ from sklearn.model_selection import train_test_split, cross_val_score
 # 记录开始时间
 start_time = time.time()
 
-# 1. 加载加利福尼亚房屋数据集
-housing = datasets.fetch_california_housing()
+# 从本地获取california_housing.csv数据
+df = pd.read_csv('./california_housing.csv')
+X = df.iloc[:, :8]
+y = df['target']
 
 # 2. 数据集分割
-X_train, X_test, y_train, y_test = train_test_split(housing.data, housing.target, test_size=0.3, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
 # 3. 使用高斯过程回归模型
 kernel = DotProduct() + WhiteKernel()
@@ -30,7 +32,7 @@ mse = mean_squared_error(y_test, y_pred)
 print(f"R^2: {r2}, MSE: {mse}")
 
 # 7. 进行5折交叉验证
-scores = cross_val_score(gpr, housing.data, housing.target, cv=5, scoring='neg_mean_squared_error')
+scores = cross_val_score(gpr, X, y, cv=5, scoring='neg_mean_squared_error')
 print(f"5-fold Cross Validation MSE: {scores}")
 
 # 记录结束时间

@@ -1,20 +1,15 @@
 import numpy as np  # 数据处理工具
 import pandas as pd
-from sklearn import datasets
 from sklearn.metrics import mean_squared_error  # 引入均方差
 from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPRegressor  # MLP回归算法
 
 np.random.seed(0)  # 保证每次数据唯一性
 
-# 获取数据
-housing = datasets.fetch_california_housing()
-
-# 将数据转化成DataFrame,去除最后三个feature
-X = pd.DataFrame(housing.data, columns=housing.feature_names)
-
-# 获取目标值
-y = housing.target
+# 从本地获取california_housing.csv数据
+df = pd.read_csv('./california_housing.csv')
+X = df.iloc[:, :8]
+y = df['target']
 
 # 拆分数据集（train set & test set）
 Xtrain, Xtest, Ytrain, Ytest = train_test_split(X, y, test_size=0.3, random_state=420)

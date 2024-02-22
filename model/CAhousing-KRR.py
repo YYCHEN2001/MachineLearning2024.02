@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from sklearn import datasets
 from sklearn.kernel_ridge import KernelRidge  # 引入核岭回归
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import r2_score
@@ -11,24 +10,10 @@ from sklearn.preprocessing import StandardScaler
 
 KRR = KernelRidge()
 
-# 获取datasets.fetch_california_housing()数据
-housing = datasets.fetch_california_housing()
-
-# 特征解释
-# MedInc：该街区住户的收入中位数
-# HouseAge：该街区房屋使用年代的中位数
-# AveRooms：该街区平均的房间数目
-# AveBedrms：该街区平均的卧室数目
-# Population：街区人口
-# AveOccup：平均入住率
-# Latitude：街区的纬度
-# Longitude：街区的经度
-
-# 将数据转化成DataFrame,去除最后三个feature
-X = pd.DataFrame(housing.data, columns=housing.feature_names)
-
-# 获取目标值
-y = housing.target
+# 从本地获取california_housing.csv数据
+df = pd.read_csv('./california_housing.csv')
+X = df.iloc[:, :8]
+y = df['target']
 
 # 拆分数据集（train set & test set）
 Xtrain, Xtest, Ytrain, Ytest = train_test_split(X, y, test_size=0.3, random_state=420)
