@@ -1,16 +1,15 @@
-from sklearn import datasets
-from sklearn.linear_model import LinearRegression
-from sklearn.model_selection import train_test_split
-from sklearn.model_selection import cross_val_score
-from sklearn.metrics import mean_squared_error
-from sklearn.metrics import r2_score
-from sklearn.preprocessing import StandardScaler  # 对训练集进行标准化
+import time  # 计时模块
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from sklearn import datasets
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+from sklearn.metrics import r2_score
+from sklearn.model_selection import cross_val_score
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler  # 对训练集进行标准化
 
-# 计时模块
-import time
 # 记录开始时间
 start_time = time.time()
 # 获取datasets.fetch_california_housing()数据

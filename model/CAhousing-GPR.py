@@ -1,11 +1,9 @@
+import time  # 计时模块
 from sklearn import datasets
 from sklearn.gaussian_process import GaussianProcessRegressor
 from sklearn.gaussian_process.kernels import DotProduct, WhiteKernel
-from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.metrics import mean_squared_error, r2_score
-
-# 计时模块
-import time
+from sklearn.model_selection import train_test_split, cross_val_score
 
 # 记录开始时间
 start_time = time.time()

@@ -2,12 +2,13 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from sklearn import datasets
-from sklearn.model_selection import train_test_split
-from sklearn.model_selection import cross_val_score
+from sklearn.kernel_ridge import KernelRidge  # 引入核岭回归
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import r2_score
+from sklearn.model_selection import cross_val_score
+from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-from sklearn.kernel_ridge import KernelRidge  # 引入核岭回归
+
 KRR = KernelRidge()
 
 # 获取datasets.fetch_california_housing()数据

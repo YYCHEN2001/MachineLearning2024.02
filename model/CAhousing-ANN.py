@@ -1,9 +1,9 @@
 import numpy as np  # 数据处理工具
 import pandas as pd
-from sklearn.model_selection import train_test_split
 from sklearn import datasets
-from sklearn.neural_network import MLPRegressor  # MLP回归算法
 from sklearn.metrics import mean_squared_error  # 引入均方差
+from sklearn.model_selection import train_test_split
+from sklearn.neural_network import MLPRegressor  # MLP回归算法
 
 np.random.seed(0)  # 保证每次数据唯一性
 
